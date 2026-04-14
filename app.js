@@ -12,9 +12,11 @@ app.use(express.json());
 // rutas
 const usuariosRoutes = require('./routes/usuarios');
 const riasecRoutes = require('./routes/riasec');
+const informacionRoutes = require('./routes/informacion');
 
 app.use('/usuarios', usuariosRoutes);
 app.use('/riasec', riasecRoutes); // 👈 importante
+app.use('/informacion', informacionRoutes);
 
 // puerto
 const PORT = process.env.PORT || 3000;
