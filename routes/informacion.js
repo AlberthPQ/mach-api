@@ -18,4 +18,24 @@ router.get('/regiones', (req, res) => {
   });
 });
 
+// 🔥 UNIVERSIDADES POR REGIÓN
+router.get('/universidades/:region', (req, res) => {
+  const { region } = req.params;
+
+  const sql = `
+    SELECT DISTINCT nombre, tipo, licenciamiento, pagina_web
+    FROM instituciones
+    WHERE region = ?
+  `;
+
+  db.query(sql, [region], (err, results) => {
+    if (err) {
+      console.error("❌ Error DB:", err);
+      return res.status(500).json({ error: "Error al obtener universidades" });
+    }
+
+    res.json(results);
+  });
+});
+
 module.exports = router;
