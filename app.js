@@ -10,12 +10,10 @@ app.use(cors());
 app.use(express.json());
 
 // rutas
-const usuariosRoutes = require('./routes/usuarios');
 const riasecRoutes = require('./routes/riasec');
 const informacionRoutes = require('./routes/informacion');
 
-app.use('/usuarios', usuariosRoutes);
-app.use('/riasec', riasecRoutes); // 👈 importante
+app.use('/riasec', riasecRoutes);
 app.use('/informacion', informacionRoutes);
 
 // puerto

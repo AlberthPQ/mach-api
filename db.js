@@ -1,21 +1,20 @@
 // archivo: db.js
 
-const mysql = require('mysql2');
+const { Pool } = require('pg');
 
-const connection = mysql.createConnection({
-  host: 'sql3.freesqldatabase.com',
-  user: 'sql3822649',
-  password: 'RNIbEHkmK2',
-  database: 'sql3822649',
-  port: 3306
-});
-
-connection.connect((err) => {
-  if (err) {
-    console.error('❌ Error de conexión:', err);
-    return;
+const pool = new Pool({
+  host: 'db.rbadfyeqxrpqlkufhwue.supabase.co',
+  user: 'postgres',
+  password: 'Gominol@_19961022',
+  database: 'postgres',
+  port: 5432,
+  ssl: {
+    rejectUnauthorized: false
   }
-  console.log('✅ Conectado a MySQL');
 });
 
-module.exports = connection;
+pool.connect()
+  .then(() => console.log('✅ Conectado a Supabase PostgreSQL'))
+  .catch(err => console.error('❌ Error conexión:', err));
+
+module.exports = pool;
